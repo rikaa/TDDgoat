@@ -1,0 +1,1 @@
+import sys; sys.path.append('/nix/store/ja6r5fd540kgz4qm7q2lrs0v379msbdx-python-2.7.10/lib/python2.7/site-packages')
