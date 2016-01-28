@@ -16,7 +16,7 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.get('http://localhost:8000')
 
         # and indeed, the site exists
-        self.assertIn('To-do', self.browser.title) 
+        self.assertIn('To-Do', self.browser.title) 
         self.fail('Finsih the test!')
 
         # She inserts her first to-do item and press enter
