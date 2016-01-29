@@ -31,15 +31,21 @@ class NewVisitorTest(unittest.TestCase):
         # She inserts her first to-do item and press enter
         inputbox.send_keys('buy milk')
 
-        # the item is added to her list
+        # When she hits enter, the page updates, and now the page lists
+        # "1: Buy peacock feathers" as an item in a to-do list table
         inputbox.send_keys(Keys.ENTER)
+        
+        # she enters a second itom
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('buy more milk')
+        inputbox.send_keys(Keys.ENTER)
+
+
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-                any(row.text == '1: buy milk' for row in rows),
-                "New to-do item does not appear in the table"
-                )
+        self.assertIn('1: buy milk', [row.text for row in rows])
+        self.assertIn('2: buy more milk', [row.text for row in rows])
         # entering a second item extends the list
 
         # the next day, she checks the website again wondering
