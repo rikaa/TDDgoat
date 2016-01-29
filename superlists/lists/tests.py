@@ -32,3 +32,19 @@ class HomePageTest(TestCase):
                 )
         self.assertEqual(response.content.decode(), expected_html)
 
+class ItemModelTest(TestCase):
+    from lists.models import Item
+
+    item1 = Item()
+    item1.text = 'some text'
+    item1.save()
+
+    item2 = Item()
+    item2.text = 'some text'
+    item2.save()
+
+    saved_items = Item.objects.all()
+    self.assertEqual(saved_items.count(), 2)
+    self.assertEqual(saved_item[0], 'some text')
+    self.assertEqual(saved_item[1], 'more text')
+
